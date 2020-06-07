@@ -4,6 +4,8 @@ Hi. I'm Benjamin Chen, author of this Tic Tac Toe game. There can be 1 player or
 
 ## Gameplay
 
+To run the game, **it is important to note that running the file in the terminal will produce many errors.** It must be run in a python interpreter like IDLE, or on the command line built into some Python interpreters.
+
 Here is an example of gameplay.
 
 ```
