@@ -1,39 +1,36 @@
 import random
 
 def eval_spaces():
-    spaces=[]
+    spaces=''
     for x in table:
-        if x in "XO123456789":
-            spaces.append(x)
+        if x in "XO123456789": spaces+=x
     return spaces
 
 def iswinner(turn):
-    if \
+    def ch(t1,t2,t3):
+        return table[t1]==turn and table[t2]==turn and table[t3]==turn
+    return \
             table[:25].count(turn) == 3\
             or table[26:53].count(turn) == 3\
             or table[70:].count(turn) == 3\
-            or table[16] == turn and table[44] == turn and table[72] == turn\
-            or table[20] == turn and table[48] == turn and table[76] == turn\
-            or table[24] == turn and table[52] == turn and table[80] == turn\
-            or table[16] == turn and table[48] == turn and table[80] == turn\
-            or table[24] == turn and table[48] == turn and table[72] == turn:
-        return True
-        #each index represents some point on the table.
-        #although admittedly not the most comprehensible way, or the most flexible, it works
-        #maybe will improve it soon?
-    else:
-        return False
+            or ch(16,44,72)\
+            or ch(20,48,76)\
+            or ch(24,52,80)\
+            or ch(16,48,80)\
+            or ch(24,48,72)
 
 #2p
 while True:
-    x=input("How many players, 1 or 2?")
-    if x=="1" or "2":
+    x=input("How many players, 1 or 2? ")
+    if x=="1" or x=="2":
         break
+
 if x=="2":
     while True: #This repeats every time someone wants a new game.
         x_o=1 if input("X first or O first (answer x or o) Ans: ").lower()=="x" else 2 #x will go first if x_o is odd.
         table="|---|---|---|\n| 1 | 2 | 3 |\n|---|---|---|\n| 4 | 5 | 6 |\n|---|---|---|\n| 7 | 8 | 9 |\n|---|---|---|"; print (table + "\nEnter the coordinate to place a marker.")
         while True: #what happens every turn
+            space=eval_spaces()
             turn="X" if x_o%2==1 else "O"
             while True:
                 ans= input(turn + "? ")
