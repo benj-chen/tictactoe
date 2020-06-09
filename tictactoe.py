@@ -76,7 +76,7 @@ else:
                     if ans not in table or len(ans)!=1 or str(ans) not in "123456789": print ("Sorry, error! Try again: ")
                     else: break
             else:
-                corners=(list('1369'))
+                corners=(list('1379'))
                 edges=(list('2468'))
                 random.shuffle(corners)
                 random.shuffle(edges)
